@@ -116,3 +116,4 @@ int print_hex(unsigned int num, int uppercase)
 
 	return (include);
 }
+
