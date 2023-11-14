@@ -1,0 +1,94 @@
+#include "main.h"
+
+/**
+ * print_int - Print a signed integer
+ * @num: The integer to be printed
+ *
+ * Return: The number of characters printed
+ */
+int print_int(int num)
+{
+	int include = 0;
+	int temp = num;
+
+	if (num < 0)
+	{
+		include += _putchar('-');
+		num = -num;
+	}
+
+	do
+	{
+		temp /= 10;
+		include++;
+	} while (temp > 0);
+
+	do
+	{
+		_putchar(num % 10 + '0');
+		num /= 10;
+	} while (num > 0);
+
+	return (include);
+}
+
+/**
+ * print_uint - Print an unsigned integer
+ * @num: The unsigned integer to be printed
+ *
+ * Return: The number of characters printed
+ */
+int print_uint(unsigned int num)
+{
+	int include = 0;
+
+	do
+	{
+		print_char(num % 10 + '0');
+		include++;
+		num /= 10;
+	} while (num > 0);
+
+	return (include);
+}
+
+/**
+ * print_octal - Print an unsigned integer in octal format
+ * @num: The unsigned integer to be printed
+ *
+ * Return: The number of characters printed
+ */
+int print_octal(unsigned int num)
+{
+	int include = 0;
+
+	do
+	{
+		print_char(num % 8 + '0');
+		include++;
+		num /= 8;
+	} while (num > 0);
+
+	return (include);
+}
+
+/**
+ * print_hex - Print an unsigned integer in hexadecimal format
+ * @num: The unsigned integer to be printed
+ * @uppercase: Flag to indicate uppercase (1) or lowercase (0) letters
+ *
+ * Return: The number of characters printed
+ */
+int print_hex(unsigned int num, int uppercase)
+{
+	int include = 0;
+
+	do
+	{
+		print_char((num % 16 < 10) ? (num % 16 + '0') : (num % 16 - 10 + (uppercase ? 'A' : 'a')));
+		include++;
+		num /= 16;
+	} while (num > 0);
+
+	return (include);
+}
