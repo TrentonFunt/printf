@@ -42,6 +42,8 @@ int _printf(const char *format, ...)
 				include += print_pointer(va_arg(list_args, void*));
 			else if (*format == 'r')
 				include += print_unknown('r');
+			else if (*format == 'b')
+				include += print_binary(va_arg(list_args, unsigned int));
 		}
 		format++;
 	}
