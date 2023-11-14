@@ -8,21 +8,27 @@
  */
 int print_binary(unsigned int num)
 {
+	int count = 0;
 	int include = 0;
+	int i;
+	char buffer[32];
 
 	if (num == 0)
 	{
-		include += _putchar('0');
+		count += _putchar('0');
 	}
 	else
 	{
-		while (num > 0)
-		{
-			_putchar((num % 2) + '0');
+		do {
+			buffer[include++] = (num % 2) + '0';
 			num /= 2;
-			include++;
+		} while (num > 0);
+
+		for (i = include - 1; i >= 0; i--)
+		{
+			count += _putchar(buffer[i]);
 		}
 	}
 
-	return (include);
+	return (count);
 }
