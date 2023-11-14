@@ -21,6 +21,11 @@ int print_str(char *str)
 {
 	int len = 0;
 
+if (str == NULL) 
+{
+_printf("(null)");
+return (6);
+}
 	while (str[len] != '\0')
 	{
 		print_char(str[len]);
