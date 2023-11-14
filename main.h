@@ -12,5 +12,7 @@ int print_int(int num);
 int print_uint(unsigned int num);
 int print_octal(unsigned int num);
 int print_hex(unsigned int num, int uppercase);
+int print_pointer(void *addr);
+int print_unknown(char specifier);
 
 #endif /* MAIN_H */

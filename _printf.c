@@ -14,9 +14,7 @@ int _printf(const char *format, ...)
 
 	if (format == NULL)
 		return (-1);
-
 	va_start(list_args, format);
-
 	while (*format)
 	{
 		if (*format != '%')
@@ -26,7 +24,6 @@ int _printf(const char *format, ...)
 			format++;
 			if (*format == '\0')
 				break;
-
 			if (*format == '%')
 				include += print_char('%');
 			else if (*format == 'c')
@@ -41,12 +38,13 @@ int _printf(const char *format, ...)
 				include += print_octal(va_arg(list_args, unsigned int));
 			else if (*format == 'x' || *format == 'X')
 				include += print_hex(va_arg(list_args, unsigned int), (*format == 'X'));
+			else if (*format == 'p')
+				include += print_pointer(va_arg(list_args, void*));
+			else if (*format == 'r')
+				include += print_unknown('r');
 		}
-
 		format++;
 	}
-
 	va_end(list_args);
-
 	return (include);
 }

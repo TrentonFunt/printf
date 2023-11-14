@@ -1,5 +1,6 @@
 #include "main.h"
 #include <stdio.h>
+#include <stdbool.h>
 
 /**
  * print_int - Print an integer
@@ -9,27 +10,34 @@
  */
 int print_int(int num)
 {
-	int include = 0;
-	int i;
-	char buffer[12];
+int include = 0;
+int i;
+char buffer[12];
+bool is_negative = false;
 
-	if (num < 0)
-	{
-		buffer[include++] = '-';
-		num = -num;
-	}
+if (num < 0)
+{
+is_negative = true;
+num = -num;
+}
 
-	do {
-		buffer[include++] = num % 10 + '0';
-		num /= 10;
-	} while (num > 0);
+do {
+buffer[include++] = num % 10 + '0';
+num /= 10;
+} while (num > 0);
 
-	for (i = include - 1; i >= 0; i--)
-	{
-		_putchar(buffer[i]);
-	}
+if (is_negative)
+{
+_putchar('-');
+include++;
+}
 
-	return (include);
+for (i = include - 1; i >= 0; i--)
+{
+_putchar(buffer[i]);
+}
+
+return (include);
 }
 
 /**
