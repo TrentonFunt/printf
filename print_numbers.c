@@ -18,7 +18,14 @@ bool is_negative = false;
 if (num < 0)
 {
 is_negative = true;
+if (num == INT_MIN)
+{
+buffer[include++] = '8';
+num = -(num / 10);
+} else
+{
 num = -num;
+}
 }
 
 do {

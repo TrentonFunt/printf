@@ -3,6 +3,8 @@
 
 #include <stdarg.h>
 #include <stddef.h>
+#include <stdbool.h>
+#include <limits.h>
 
 int _printf(const char *format, ...);
 int _putchar(char c);
