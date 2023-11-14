@@ -21,7 +21,7 @@ int print_str(char *str)
 {
 	int len = 0;
 
-if (str == NULL) 
+if (str == NULL)
 {
 _printf("(null)");
 return (6);
