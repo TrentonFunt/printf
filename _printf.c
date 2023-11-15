@@ -29,7 +29,7 @@ int _printf(const char *format, ...)
 			else if (*format == 'c')
 				include += print_char(va_arg(list_args, int));
 			else if (*format == 's')
-				include += print_str(va_arg(list_args, char*));
+				include += print_str(va_arg(list_args, char *));
 			else if (*format == 'd' || *format == 'i')
 				include += print_int(va_arg(list_args, int));
 			else if (*format == 'u')
@@ -44,9 +44,9 @@ int _printf(const char *format, ...)
 				include += print_unknown('r');
 			else if (*format == 'b')
 				include += print_binary(va_arg(list_args, unsigned int));
-		}
-		format++;
-	}
-	va_end(list_args);
+			else if (*format == 'S')
+				include += print_string(va_arg(list_args, char *));
+		} format++;
+	} va_end(list_args);
 	return (include);
 }
