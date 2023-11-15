@@ -8,6 +8,12 @@
  */
 int print_char(char c)
 {
+if (c == '\0')
+{
+_putchar('\\');
+_putchar('0');
+return (2);
+}
 	return (_putchar(c));
 }
 
