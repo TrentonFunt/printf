@@ -68,12 +68,14 @@ int handle_format_specifier(char specifier, va_list list_args)
 			return (print_hex(va_arg(list_args, unsigned int), (specifier == 'X')));
 		case 'p':
 			return (print_pointer(va_arg(list_args, void *)));
-		case 'r':
-			return (print_unknown('r'));
+		case 'v':
+			return (print_unknown('v'));
 		case 'b':
 			return (print_binary(va_arg(list_args, unsigned int)));
 		case 'S':
 			return (print_string(va_arg(list_args, char *)));
+		case 'r':
+			return (print_reversed_string(va_arg(list_args, char *)));
 		default:
 			return (print_unknown(specifier));
 	}
