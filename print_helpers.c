@@ -15,6 +15,12 @@ int print_digits = 0;
 int shift;
 char digit;
 
+if (addr == NULL)
+{
+_printf("(nil)");
+return (5);
+}
+
 ptr_val = (unsigned long)addr;
 _putchar('0');
 _putchar('x');
