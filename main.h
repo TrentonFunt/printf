@@ -18,6 +18,5 @@ int print_pointer(void *addr);
 int print_unknown(char specifier);
 int print_binary(unsigned int num);
 int print_string(char *str);
-int print_reversed_string(char *str);
 
 #endif /* MAIN_H */
