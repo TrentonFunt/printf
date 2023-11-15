@@ -18,16 +18,16 @@ int _printf(const char *format, ...)
 	while (*format)
 	{
 		if (*format != '%')
-			include += print_char(*format);
+			include += _putchar(*format);
 		else
 		{
 			format++;
 			if (*format == '\0')
 				break;
 			if (*format == '%')
-				include += print_char('%');
+				include += _putchar('%');
 			else if (*format == 'c')
-				include += print_char(va_arg(list_args, int));
+				include += _putchar(va_arg(list_args, int));
 			else if (*format == 's')
 				include += print_str(va_arg(list_args, char *));
 			else if (*format == 'd' || *format == 'i')

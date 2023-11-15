@@ -1,20 +1,6 @@
 #include "main.h"
 
 /**
- * print_char - Print a single character.
- * @c: The character to be printed.
- *
- * Return: The number of characters printed (always 1).
- */
-int print_char(char c)
-{
-	if (c == '\0')
-		return (0);
-
-	return (_putchar(c));
-}
-
-/**
  * print_str - Print a string of characters.
  * @str: The string to be printed.
  *
@@ -31,7 +17,7 @@ return (6);
 }
 	while (str[len] != '\0')
 	{
-		print_char(str[len]);
+		_putchar(str[len]);
 		len++;
 	}
 	return (len);

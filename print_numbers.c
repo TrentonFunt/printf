@@ -1,5 +1,4 @@
 #include "main.h"
-#include <stdio.h>
 #include <stdbool.h>
 
 /**
@@ -22,7 +21,8 @@ if (num == INT_MIN)
 {
 buffer[include++] = '8';
 num = -(num / 10);
-} else
+}
+else
 {
 num = -num;
 }
