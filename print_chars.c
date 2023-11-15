@@ -8,12 +8,9 @@
  */
 int print_char(char c)
 {
-if (c == '\0')
-{
-_putchar('\\');
-_putchar('0');
-return (2);
-}
+	if (c == '\0')
+		return (0);
+
 	return (_putchar(c));
 }
 

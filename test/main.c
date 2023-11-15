@@ -93,6 +93,14 @@ _printf("Large number of characters: [%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c]\
 printf("Large number of characters: [%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c]\n",
            'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
            'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T');
+len = _printf("Test Case 1: [%c]\n", '\0');
+printf("Test Case 1: [%c]\n", '\0');
+len = _printf("Test Case 2: [%c]\n", '\t');
+printf("Test Case 2: [%c]\n", '\t');   
+len = _printf("Test Case 3: [%c]\n", '0');
+printf("Test Case 3: [%c]\n", '0');
+len = _printf("Test Case 4: [%c]\n", 'A');
+printf("Test Case 4: [%c]\n", 'A');
 /* extra extra */
 len = _printf("Test Case 1: %d\n", 12345);
 printf("Test Case 1: %d\n", 12345);
