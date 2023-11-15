@@ -14,7 +14,15 @@ int print_string(char *str)
 	{
 		if (*str >= 32 && *str < 127) /* Condition Specification */
 		{
-			count += _putchar(*str);
+			if (*str == '\n') /* Handle newline character */
+			{
+				count += _putchar('\\');
+				count += _putchar('n');
+			}
+			else
+			{
+				count += _putchar(*str);
+			}
 		}
 		else
 		{
