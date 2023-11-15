@@ -14,39 +14,67 @@ int _printf(const char *format, ...)
 
 	if (format == NULL)
 		return (-1);
+
 	va_start(list_args, format);
+
 	while (*format)
 	{
 		if (*format != '%')
+		{
 			include += _putchar(*format);
+		}
 		else
 		{
 			format++;
 			if (*format == '\0')
 				break;
-			if (*format == '%')
-				include += _putchar('%');
-			else if (*format == 'c')
-				include += _putchar(va_arg(list_args, int));
-			else if (*format == 's')
-				include += print_str(va_arg(list_args, char *));
-			else if (*format == 'd' || *format == 'i')
-				include += print_int(va_arg(list_args, int));
-			else if (*format == 'u')
-				include += print_uint(va_arg(list_args, unsigned int));
-			else if (*format == 'o')
-				include += print_octal(va_arg(list_args, unsigned int));
-			else if (*format == 'x' || *format == 'X')
-				include += print_hex(va_arg(list_args, unsigned int), (*format == 'X'));
-			else if (*format == 'p')
-				include += print_pointer(va_arg(list_args, void*));
-			else if (*format == 'r')
-				include += print_unknown('r');
-			else if (*format == 'b')
-				include += print_binary(va_arg(list_args, unsigned int));
-			else if (*format == 'S')
-				include += print_string(va_arg(list_args, char *));
-		} format++;
-	} va_end(list_args);
+
+			include += handle_format_specifier(*format, list_args);
+		}
+
+		format++;
+	}
+
+	va_end(list_args);
 	return (include);
+}
+
+/**
+ * handle_format_specifier - Handles the logic for each format specifier.
+ * @specifier: The format specifier to handle.
+ * @list_args: The list of arguments for format substitution.
+ *
+ * Return: The number of characters printed for the given specifier.
+ */
+int handle_format_specifier(char specifier, va_list list_args)
+{
+	switch (specifier)
+	{
+		case '%':
+			return (_putchar('%'));
+		case 'c':
+			return (_putchar(va_arg(list_args, int)));
+		case 's':
+			return (print_str(va_arg(list_args, char *)));
+		case 'd':
+		case 'i':
+			return (print_int(va_arg(list_args, int)));
+		case 'u':
+			return (print_uint(va_arg(list_args, unsigned int)));
+		case 'o':
+			return (print_octal(va_arg(list_args, unsigned int)));
+		case 'x':
+		case 'X':
+			return (print_hex(va_arg(list_args, unsigned int), (specifier == 'X')));
+		case 'p':
+			return (print_pointer(va_arg(list_args, void *)));
+		case 'r':
+			return (print_unknown('r'));
+		case 'b':
+			return (print_binary(va_arg(list_args, unsigned int)));
+		case 'S':
+			return (print_string(va_arg(list_args, char *)));
+		default:
+			return (print_unknown(specifier));
+	}
 }

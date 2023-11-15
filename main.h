@@ -7,6 +7,7 @@
 #include <limits.h>
 
 int _printf(const char *format, ...);
+int handle_format_specifier(char specifier, va_list list_args);
 int _putchar(char c);
 int print_str(char *str);
 int print_int(int num);
