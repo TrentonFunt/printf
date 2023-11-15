@@ -12,12 +12,13 @@ int print_string(char *str)
 
 	while (*str != '\0')
 	{
-		if (*str >= 32 && *str < 127) /* Condition Specification */
+		if (*str >= 32 && *str < 127)
 		{
-			if (*str == '\n') /* Handle newline character */
+			if (*str == '\n' || *str == '\t' || *str == '\r' || *str == '\0')
 			{
 				count += _putchar('\\');
-				count += _putchar('n');
+				count += _putchar(
+						*str == '\n' ? 'n' : (*str == '\t' ? 't' : (*str == '\r' ? 'r' : '0')));
 			}
 			else
 			{
