@@ -14,13 +14,13 @@ unsigned long ptr_val;
 int print_digits = 0;
 int shift;
 char digit;
-
+/* Check if address is null */
 if (addr == NULL)
 {
 _printf("(nil)");
 return (5);
 }
-
+/* Convert address to HEX */
 ptr_val = (unsigned long)addr;
 _putchar('0');
 _putchar('x');
@@ -40,7 +40,7 @@ print_digits = 1;
 
 shift -= 4;
 }
-
+/* If address is 0, print '0' */
 if (include == 2)
 {
 _putchar('0');

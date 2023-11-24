@@ -12,18 +12,19 @@ int print_binary(unsigned int num)
 	int include = 0;
 	int i;
 	char buffer[32];
-
+	/* Check if number is Zero */
 	if (num == 0)
 	{
 		count += _putchar('0');
 	}
 	else
 	{
+		/* Convert integer to binary and reverse */
 		do {
 			buffer[include++] = (num % 2) + '0';
 			num /= 2;
 		} while (num > 0);
-
+		/* Print binary numbers */
 		for (i = include - 1; i >= 0; i--)
 		{
 			count += _putchar(buffer[i]);

@@ -8,29 +8,32 @@
  */
 int print_string(char *str)
 {
-	int count = 0;
-
+	int counter = 0;
+	/* Loop to check each character in given string */
 	while (*str != '\0')
 	{
+	  /* Check if the character can be printed in ASCII format */
 		if (*str >= 32 && *str < 127)
 		{
+			/* Code to handle special characters */
 			if (*str == '\n' || *str == '\t' || *str == '\r' || *str == '\0')
 			{
-				count += _putchar('\\');
-				count += _putchar(
+				counter += _putchar('\\');
+				counter += _putchar(
 						*str == '\n' ? 'n' : (*str == '\t' ? 't' : (*str == '\r' ? 'r' : '0')));
 			}
 			else
 			{
-				count += _putchar(*str);
+				counter += _putchar(*str);
 			}
 		}
 		else
 		{
-			count += _printf("\\x%02X", (unsigned char)*str);
+			/* Print non-printable ASCII */
+			counter += _printf("\\x%02X", (unsigned char)*str);
 		}
 		str++;
 	}
 
-	return (count);
+	return (counter);
 }

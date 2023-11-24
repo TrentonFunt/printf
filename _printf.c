@@ -15,12 +15,14 @@ int _printf(const char *format, ...)
 
 	while (format && format[i] != '\0')
 	{
+		/* Check for double percent (escape sequence) */
 		if (format[i] == '%' && format[i + 1] == '%')
 		{
 			include += _putchar('%');
 			i += 2;
 			continue;
 		}
+		/* Check format specifier */
 		else if (format[i] == '%' && format[i + 1] != '\0')
 		{
 			i++;

@@ -14,9 +14,12 @@ int i;
 char buffer[12];
 bool is_negative = false;
 
+/* Checking if the number is negative */
 if (num < 0)
 {
 is_negative = true;
+
+/* Special case handling */
 if (num == INT_MIN)
 {
 buffer[include++] = '8';
@@ -27,18 +30,18 @@ else
 num = -num;
 }
 }
-
+/* Integer conversion to string */
 do {
 buffer[include++] = num % 10 + '0';
 num /= 10;
 } while (num > 0);
-
+/* Check if number is negative and print '-' sign */
 if (is_negative)
 {
 _putchar('-');
 include++;
 }
-
+/* Use putchar to print numbers */
 for (i = include - 1; i >= 0; i--)
 {
 _putchar(buffer[i]);
@@ -59,11 +62,12 @@ int print_uint(unsigned int num)
 	int i;
 	char buffer[12];
 
+	/* Integer conversion to string */
 	do {
 		buffer[include++] = num % 10 + '0';
 		num /= 10;
 	} while (num > 0);
-
+	/* Use putchar to print correct order */
 	for (i = include - 1; i >= 0; i--)
 	{
 		_putchar(buffer[i]);
