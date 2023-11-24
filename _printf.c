@@ -1,20 +1,25 @@
 #include "main.h"
 
 /**
- * _printf - a custom printf function.
- * @format: the format string.
- * @...: an ellipsis
- * Return: include
+ * _printf - Custom printf function that handles a subset of format specifiers.
+ * @format: Format string containing directives.
+ * @...: Variable number of arguments for format substitution.
+ *
+ * Return: The number of characters printed (excluding the null byte).
  */
 int _printf(const char *format, ...)
 {
+	int include = 0;
 	va_list list_args;
-	int i = 0, include = 0;
+
+	if (format == NULL)
+		return (-1);
 
 	va_start(list_args, format);
 
-	while (format && format[i] != '\0')
+	while (*format)
 	{
+<<<<<<< HEAD
 		/* Check for double percent (escape sequence) */
 		if (format[i] == '%' && format[i + 1] == '%')
 		{
@@ -27,13 +32,22 @@ int _printf(const char *format, ...)
 		{
 			i++;
 			include += handle_format_specifier(format[i], list_args);
+=======
+		if (*format != '%')
+		{
+			include += _putchar(*format);
+>>>>>>> b0331cf56c632490d78ec46654e49d4f1b8c7558
 		}
 		else
 		{
-			include += _putchar(format[i]);
+			format++;
+			if (*format == '\0')
+				break;
+
+			include += handle_format_specifier(*format, list_args);
 		}
 
-		i++;
+		format++;
 	}
 
 	va_end(list_args);
@@ -43,7 +57,7 @@ int _printf(const char *format, ...)
 /**
  * handle_format_specifier - Handles the logic for each format specifier.
  * @specifier: The format specifier to handle.
- * @list_args: The va_list containing the arguments for format substitution.
+ * @list_args: The list of arguments for format substitution.
  *
  * Return: The number of characters printed for the given specifier.
  */
